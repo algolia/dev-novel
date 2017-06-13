@@ -24,7 +24,10 @@ export function registerInitializer(initializer: Function) {
 
 export function action(name: string) {
   return function(...args: any) {
-    devNovel.actionLogs.push({ name, data: args });
+    devNovel.actionLogs.push({
+      name,
+      data: Array.from(args).map(arg => (arg && arg.preventDefault ? '[SyntheticEvent]' : arg)),
+    });
   };
 }
 
