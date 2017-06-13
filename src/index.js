@@ -1,6 +1,6 @@
 /* @flow */
 
-import { action } from 'mobx';
+import { action as mobxAction } from 'mobx';
 
 import DevNovel from './dev-novel';
 
@@ -22,7 +22,13 @@ export function registerInitializer(initializer: Function) {
   devNovel.initializers.push(initializer);
 }
 
-export const start = action((opts: StartOptions = {}) => {
+export function action(name: string) {
+  return function(...args: any) {
+    devNovel.actionLogs.push({ name, data: args });
+  };
+}
+
+export const start = mobxAction((opts: StartOptions = {}) => {
   devNovel.applyOpts(opts);
 
   // select first story in the list

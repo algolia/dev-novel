@@ -4,6 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Sidebar from './sidebar';
+import ActionLogger from './action-logger';
 
 const UIWrapper = styled.div`
   background-color: rgb(247, 247, 247);
@@ -20,6 +21,7 @@ const BodyWrapper = styled.div`
 
 const Body = styled.div`
   height: 100%;
+  width: 100%;
 `;
 
 const StoryContainer = styled.div`
@@ -27,7 +29,15 @@ const StoryContainer = styled.div`
   border: solid 1px #E4E4E4;
   border-radius: 5px;
   height: calc(65vh - 20px); /* -20px of inner padding */
-  overflow-x: scroll;
+  width: 100%;
+  overflow: scroll;
+`;
+
+const ActionLoggerContainer = StoryContainer.extend`
+  margin-top: 10px;
+  height: calc(35vh - 10px); /* -10px of bottom padding */
+  overflow: hidden;
+  width: 100%;
 `;
 
 const DevNovelUI = ({ devNovelInstance }: { devNovelInstance: Object }) =>
@@ -36,6 +46,9 @@ const DevNovelUI = ({ devNovelInstance }: { devNovelInstance: Object }) =>
     <BodyWrapper>
       <Body>
         <StoryContainer id="story-container" />
+        <ActionLoggerContainer>
+          <ActionLogger devNovelInstance={devNovelInstance} />
+        </ActionLoggerContainer>
       </Body>
     </BodyWrapper>
   </UIWrapper>;

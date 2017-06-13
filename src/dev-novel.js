@@ -7,6 +7,8 @@ import React from 'react';
 import { render } from 'react-dom';
 import { action, observable } from 'mobx';
 
+import type { ObservableArray } from 'mobx';
+
 import DevNovelUI from './ui/index';
 
 class DevNovel {
@@ -20,6 +22,7 @@ class DevNovel {
   isFirstRun = true;
 
   @observable selectedStory: ?string = undefined;
+  @observable actionLogs: ObservableArray<any> = [];
 
   get storyContainer(): HTMLDivElement {
     return window.document.getElementById('story-container');
@@ -49,12 +52,14 @@ class DevNovel {
   }
 
   // * empty story container
+  // * clear old action logs
   // * load story render fn
   loadSelectedStory() {
     if (this.isFirstRun) {
       this.isFirstRun = false;
     } else {
       this.disposers.forEach(disposer => disposer());
+      this.actionLogs.clear();
       this.emptyStoryContainer();
     }
 
