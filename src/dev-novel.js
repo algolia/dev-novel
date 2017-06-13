@@ -1,0 +1,98 @@
+/* @flow */
+
+import get from 'lodash/get';
+import isString from 'lodash/isString';
+
+import React from 'react';
+import { render } from 'react-dom';
+import { action, observable } from 'mobx';
+
+import DevNovelUI from './ui/index';
+
+class DevNovel {
+  // dev-novel.js options
+  @observable openAllStories: boolean = false;
+
+  // inner state
+  initializers: Array<Function> = [];
+  disposers: Array<Function> = [];
+  stories: { [string]: { [string]: Function } } = {};
+  isFirstRun = true;
+
+  @observable selectedStory: ?string = undefined;
+
+  get storyContainer(): HTMLDivElement {
+    return window.document.getElementById('story-container');
+  }
+
+  applyOpts(opts: Object) {
+    const { openAllStories = false } = opts;
+    this.openAllStories = openAllStories;
+  }
+
+  add(parentName: string) {
+    return (storyName: string, fn: Function) => {
+      if (typeof get(this.stories, `${parentName}.${storyName}`) === 'function') {
+        throw new Error(`story: ${storyName} is already defined`);
+      }
+
+      if (!isString(storyName) && typeof fn !== 'function') {
+        throw new Error('usage: `add(storyName: string, fn: Function)`');
+      }
+
+      Object.assign(this.stories, {
+        [parentName]: { ...(this.stories[parentName] || {}), [storyName]: fn },
+      });
+
+      return this._bindedInstance({ parentName });
+    };
+  }
+
+  // * empty story container
+  // * load story render fn
+  loadSelectedStory() {
+    if (this.isFirstRun) {
+      this.isFirstRun = false;
+    } else {
+      this.disposers.forEach(disposer => disposer());
+      this.emptyStoryContainer();
+    }
+
+    this.initializers.forEach(initializer => initializer());
+
+    const fn = get(this.stories, this.selectedStory);
+    fn(this.storyContainer);
+  }
+
+  @action
+  selectParent(parentName: string) {
+    // update selected story
+    const [firstStoryOfParent] = Object.keys(this.stories[parentName]);
+    this.selectedStory = `${parentName}.${firstStoryOfParent}`;
+    this.loadSelectedStory();
+  }
+
+  @action
+  selectStory(selectedStory: string) {
+    this.selectedStory = selectedStory;
+    this.loadSelectedStory();
+  }
+
+  emptyStoryContainer() {
+    this.storyContainer.innerHTML = '';
+  }
+
+  injectUI() {
+    const container = window.document.createElement('div');
+    window.document.body.appendChild(container);
+    render(React.createElement(DevNovelUI, { anyStorybook: this }), container);
+  }
+
+  _bindedInstance(opts: { parentName: string }) {
+    return {
+      add: this.add(opts.parentName),
+    };
+  }
+}
+
+export default DevNovel;
