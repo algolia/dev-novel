@@ -1,6 +1,6 @@
-# dev-novel.js
+# dev-novel
 
-> dev-novel.js is a clone of the well known [storybook.js](https://github.com/storybooks/storybook). It allows you to browse through example of a library. It's less complete than Storybook but works with every JS library, it's not linked to React components exclusively.
+> dev-novel is a clone of the well known [storybook.js](https://github.com/storybooks/storybook). It allows you to browse through example of a library. It's less complete than Storybook but works with every JS library, it's not linked to React components exclusively.
 
 ![preview](./demo.gif)
 
@@ -8,14 +8,14 @@
 
 ### Installation
 
-Since the project is still private, you will need to clone and build dev-novel.js by yourself in order to use it in your project:
+Since the project is still private, you will need to clone and build dev-novel by yourself in order to use it in your project:
 
-* `$ git clone git@github.com:algolia/dev-novel.js.git`
-* `$ cd dev-novel.js && yarn && yarn link`
+* `$ git clone git@github.com:algolia/dev-novel.git`
+* `$ cd dev-novel && yarn && yarn link`
 
 Then in your project you simply run:
 
-* `$ yarn link dev-novel.js`
+* `$ yarn link dev-novel`
 
 You will also need to provide your own build system, we are not providing an minified/unified build for the moment. So use either webpack, rollup or browserify to start your dev environment.
 
@@ -24,7 +24,7 @@ You will also need to provide your own build system, we are not providing an min
 1. **First define your stories:**
 
   ```javascript
-  import { storiesOf } from 'dev-novel.js'
+  import { storiesOf } from 'dev-novel'
 
   storiesOf('My first story')
     .add('Hello world', (container: HTMLDivElement) => {
@@ -42,7 +42,7 @@ You will also need to provide your own build system, we are not providing an min
   This can be useful when you need to provide globals for your story, for instance depending onto another library.
 
   ```javascript
-  import { registerInitializer, registerDisposer, storiesOf } from 'dev-novel.js'
+  import { registerInitializer, registerDisposer, storiesOf } from 'dev-novel'
 
   registerInitializer(() => {
     window._appState = {
@@ -70,7 +70,7 @@ You will also need to provide your own build system, we are not providing an min
 3. **Finally start dev-novel UI and open your page:**
 
   ```javascript
-  import { start, storiesOf } from 'dev-novel.js'
+  import { start, storiesOf } from 'dev-novel'
 
   [...]
 
@@ -84,7 +84,7 @@ You will also need to provide your own build system, we are not providing an min
 With actions, you can inspect events and log them directly into the page. This is pretty neat when you are manually testing your components.
 
 ```javascript
-import { action, registerDisposer, storiesOf } from 'dev-novel.js'
+import { action, registerDisposer, storiesOf } from 'dev-novel'
 
 // remove all event listeners when switching to another story
 const eventDisposers = []
