@@ -79,6 +79,35 @@ You will also need to provide your own build system, we are not providing an min
   })
   ```
 
+### Use the ActionLogger
+
+With actions, you can inspect events and log them directly into the page. This is pretty neat when you are manually testing your components.
+
+```javascript
+import { action, registerDisposer, storiesOf } from 'dev-novel.js'
+
+// remove all event listeners when switching to another story
+const eventDisposers = []
+registerDisposer(() => { eventDisposers.forEach(disposer => disposer()) })
+
+storiesOf('Button')
+  .add('click', container => {
+    const handler = action('button-click')
+    const button = document.createElement('button')
+    button.innerText = 'Click me!'
+    button.addEventListener('click', handler, false)
+
+    // remove event listener after story ran
+    const disposer = () => button.removeEventListener('click', handler, false)
+    eventDisposers.push(disposer)
+
+    // append button
+    container.appendChild(button)
+  })
+```
+
+![preview-action-logger](./preview-action-logger.gif)
+
 ### TODO
 
 * [ ] Provide initializers/disposers per stories
