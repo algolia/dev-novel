@@ -85,7 +85,7 @@ class DevNovel {
   injectUI() {
     const container = window.document.createElement('div');
     window.document.body.appendChild(container);
-    render(React.createElement(DevNovelUI, { anyStorybook: this }), container);
+    render(React.createElement(DevNovelUI, { devNovelInstance: this }), container);
   }
 
   _bindedInstance(opts: { parentName: string }) {

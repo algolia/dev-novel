@@ -1,6 +1,6 @@
 /* @flow */
 
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import Sidebar from './sidebar';
@@ -30,21 +30,14 @@ const StoryContainer = styled.div`
   overflow-x: scroll;
 `;
 
-class DevNovelUI extends Component {
-  render() {
-    const { anyStorybook } = this.props;
-
-    return (
-      <UIWrapper>
-        <Sidebar anyStorybook={anyStorybook} />
-        <BodyWrapper>
-          <Body>
-            <StoryContainer id="story-container" />
-          </Body>
-        </BodyWrapper>
-      </UIWrapper>
-    );
-  }
-}
+const DevNovelUI = ({ devNovelInstance }: { devNovelInstance: Object }) =>
+  <UIWrapper>
+    <Sidebar devNovelInstance={devNovelInstance} />
+    <BodyWrapper>
+      <Body>
+        <StoryContainer id="story-container" />
+      </Body>
+    </BodyWrapper>
+  </UIWrapper>;
 
 export default DevNovelUI;

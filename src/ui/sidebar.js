@@ -57,7 +57,7 @@ const StoryContainer = SelectParent.extend`
 @observer
 class Sidebar extends Component {
   props: {
-    anyStorybook: {
+    devNovelInstance: {
       selectedStory: string,
       selectParent: Function,
       selectStory: Function,
@@ -69,7 +69,7 @@ class Sidebar extends Component {
 
   @computed
   get stories(): { [string]: { [string]: Function } } {
-    const { anyStorybook: { stories } } = this.props;
+    const { devNovelInstance: { stories } } = this.props;
     const filterValue = this.filterValue.toLowerCase();
 
     if (filterValue && filterValue.trim() && filterValue.trim().length >= 3) {
@@ -105,22 +105,25 @@ class Sidebar extends Component {
   }
 
   renderStories() {
-    const { anyStorybook } = this.props;
+    const { devNovelInstance } = this.props;
 
     return map(this.stories, (parentStories, parentName) => {
-      const isSelected = anyStorybook.selectedStory.split('.')[0] === parentName;
+      const isSelected = devNovelInstance.selectedStory.split('.')[0] === parentName;
       return (
         <ParentContainer key={parentName}>
-          <SelectParent selected={isSelected} onClick={() => anyStorybook.selectParent(parentName)}>
+          <SelectParent
+            selected={isSelected}
+            onClick={() => devNovelInstance.selectParent(parentName)}
+          >
             {parentName}
           </SelectParent>
 
-          {anyStorybook.openAllStories || isSelected
+          {devNovelInstance.openAllStories || isSelected
             ? map(parentStories, (storyFn, storyName) =>
                 <StoryContainer
                   key={`${parentName}.${storyName}`}
-                  selected={anyStorybook.selectedStory === `${parentName}.${storyName}`}
-                  onClick={() => anyStorybook.selectStory(`${parentName}.${storyName}`)}
+                  selected={devNovelInstance.selectedStory === `${parentName}.${storyName}`}
+                  onClick={() => devNovelInstance.selectStory(`${parentName}.${storyName}`)}
                 >
                   {storyName}
                 </StoryContainer>
