@@ -1,10 +1,25 @@
 /* @flow */
 
 import React from 'react';
-import styled from 'styled-components';
+import styled, { injectGlobal } from 'styled-components';
+import styledNormalized from 'styled-normalize';
 
 import Sidebar from './sidebar';
 import ActionLogger from './action-logger';
+
+// global css to load on devNovel.injectUI()
+export const baseStyles = () => injectGlobal`
+  body {
+    color: rgb(68, 68, 68);
+    font-family: -apple-system, ".SFNSText-Regular", "San Francisco", Roboto, "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  ${styledNormalized}
+`;
 
 const UIWrapper = styled.div`
   background-color: rgb(247, 247, 247);

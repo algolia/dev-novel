@@ -22,7 +22,8 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-inspector": "^2.0.0",
-    "styled-components": "^2.0.1"
+    "styled-components": "^2.0.1",
+    "styled-normalize": "^2.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",

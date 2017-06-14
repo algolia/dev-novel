@@ -9,7 +9,7 @@ import { action, observable } from 'mobx';
 
 import type { ObservableArray } from 'mobx';
 
-import DevNovelUI from './ui/index';
+import DevNovelUI, { baseStyles } from './ui/index';
 
 class DevNovel {
   // dev-novel.js options
@@ -96,6 +96,8 @@ class DevNovel {
   }
 
   injectUI() {
+    baseStyles();
+
     const container = window.document.createElement('div');
     window.document.body.appendChild(container);
     render(React.createElement(DevNovelUI, { devNovelInstance: this }), container);
