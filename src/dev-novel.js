@@ -11,6 +11,8 @@ import type { ObservableArray } from 'mobx';
 
 import DevNovelUI, { baseStyles } from './ui/index';
 
+const escapeName = name => name.replace(/\./g, '-');
+
 class DevNovel {
   // dev-novel.js options
   @observable openAllStories: boolean = false;
@@ -51,8 +53,12 @@ class DevNovel {
         throw new Error('usage: `add(storyName: string, fn: Function)`');
       }
 
+      // remove `.` from keys or `_.get` wont work as expected
+      const safeParentName = escapeName(parentName);
+      const safeStoryName = escapeName(storyName);
+
       Object.assign(this.stories, {
-        [parentName]: { ...(this.stories[parentName] || {}), [storyName]: fn },
+        [safeParentName]: { ...(this.stories[safeParentName] || {}), [safeStoryName]: fn },
       });
 
       return this._bindedInstance({ parentName });
@@ -80,8 +86,9 @@ class DevNovel {
   @action
   selectParent(parentName: string) {
     // update selected story
-    const [firstStoryOfParent] = Object.keys(this.stories[parentName]);
-    this.selectedStory = `${parentName}.${firstStoryOfParent}`;
+    const safeParentName = escapeName(parentName);
+    const [firstStoryOfParent] = Object.keys(this.stories[safeParentName]);
+    this.selectedStory = `${safeParentName}.${firstStoryOfParent}`;
     this.loadSelectedStory();
   }
 
