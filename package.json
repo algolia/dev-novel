@@ -6,8 +6,8 @@
   "author": "iam4x",
   "license": "MIT",
   "scripts": {
-    "dev": "babel src -d dist -w",
-    "build": "babel src -d dist",
+    "dev": "NODE_ENV=development babel src -d dist -w",
+    "build": "NODE_ENV=production babel src -d dist",
     "lint": "eslint src -c .eslintrc.js"
   },
   "dependencies": {
