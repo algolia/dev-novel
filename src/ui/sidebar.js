@@ -159,7 +159,7 @@ class Sidebar extends Component {
 
     return (
       <SidebarContainer>
-        <ProjectName href={project.link}>{project.name}</ProjectName>
+        <ProjectName href={project.link} target="_default">{project.name}</ProjectName>
         <FilterContainer>
           {this.renderFilter()}
         </FilterContainer>
