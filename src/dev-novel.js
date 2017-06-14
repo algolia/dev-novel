@@ -15,6 +15,12 @@ class DevNovel {
   // dev-novel.js options
   @observable openAllStories: boolean = false;
 
+  @observable
+  project: { name: string, link: string } = {
+    name: 'dev novel',
+    link: '/',
+  };
+
   // inner state
   initializers: Array<Function> = [];
   disposers: Array<Function> = [];
@@ -29,8 +35,10 @@ class DevNovel {
   }
 
   applyOpts(opts: Object) {
-    const { openAllStories = false } = opts;
+    const { openAllStories = false, projectName = 'devnovel', projectLink = '/' } = opts;
     this.openAllStories = openAllStories;
+    this.project.name = projectName;
+    this.project.link = projectLink;
   }
 
   add(parentName: string) {

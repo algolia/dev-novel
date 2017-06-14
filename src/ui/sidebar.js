@@ -15,6 +15,22 @@ const SidebarContainer = styled.div`
   width: 250px;
 `;
 
+const ProjectName = styled.a`
+  background: rgb(247, 247, 247);
+  border: 1px solid rgb(193, 193, 193);
+  border-radius: 2px;
+  color: rgb(130, 130, 130);
+  display: block;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+  font-weight: bolder;
+  font-size: 12px;
+  padding: 5px;
+`;
+
 const FilterContainer = styled.div`
   border-bottom: 1px solid rgb(238, 238, 238);
   margin-bottom: 10px;
@@ -58,6 +74,10 @@ const StoryContainer = SelectParent.extend`
 class Sidebar extends Component {
   props: {
     devNovelInstance: {
+      project: {
+        name: string,
+        link: string,
+      },
       selectedStory: string,
       selectParent: Function,
       selectStory: Function,
@@ -135,8 +155,11 @@ class Sidebar extends Component {
   }
 
   render() {
+    const { devNovelInstance: { project } } = this.props;
+
     return (
       <SidebarContainer>
+        <ProjectName href={project.link}>{project.name}</ProjectName>
         <FilterContainer>
           {this.renderFilter()}
         </FilterContainer>
