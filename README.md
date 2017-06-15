@@ -8,16 +8,10 @@
 
 ### Installation
 
-Since the project is still private, you will need to clone and build dev-novel by yourself in order to use it in your project:
+* `$ npm i -D dev-novel` OR
+* `$ yarn add -D dev-novel`
 
-* `$ git clone git@github.com:algolia/dev-novel.git`
-* `$ cd dev-novel && yarn && yarn link`
-
-Then in your project you simply run:
-
-* `$ yarn link dev-novel`
-
-You will also need to provide your own build system, we are not providing an minified/unified build for the moment. So use either webpack, rollup or browserify to start your dev environment.
+You will need your own build system (like webpack or rollup) to process the javascript and serve the page for you. You need to serve an `index.html` with a body tag and voilà!
 
 ### Usage
 
@@ -75,6 +69,8 @@ You will also need to provide your own build system, we are not providing an min
   [...]
 
   start({
+    projectName: ?string // name of the project to display in header of sidebar
+    projectLink: ?string // URL to link on the projectName
     openAllStories?: boolean // open all parent stories item in the menu by default
   })
   ```
@@ -87,8 +83,11 @@ With actions, you can inspect events and log them directly into the page. This i
 import { action, registerDisposer, storiesOf } from 'dev-novel'
 
 // remove all event listeners when switching to another story
-const eventDisposers = []
-registerDisposer(() => { eventDisposers.forEach(disposer => disposer()) })
+let eventDisposers = []
+registerDisposer(() => {
+  eventDisposers.forEach(disposer => disposer())
+  eventDisposers = []
+})
 
 storiesOf('Button')
   .add('click', container => {
@@ -107,9 +106,3 @@ storiesOf('Button')
 ```
 
 ![preview-action-logger](./preview-action-logger.gif)
-
-### TODO
-
-* [ ] Provide initializers/disposers per stories
-* [ ] Provide an UMD build for usage in the browser
-* [ ] Open source / publish to NPM?
