@@ -10,6 +10,7 @@ import { action, observable } from 'mobx';
 import type { ObservableArray } from 'mobx';
 
 import DevNovelUI, { baseStyles } from './ui/index';
+import { updateURL, loadFromURL } from './url-helper';
 
 const escapeName = name => name.replace(/\./g, '-');
 
@@ -81,6 +82,18 @@ class DevNovel {
 
     const fn = get(this.stories, this.selectedStory);
     fn(this.storyContainer);
+    updateURL(this.selectedStory);
+  }
+
+  @action
+  initSelectedStory() {
+    const selectedStoryFromURL = loadFromURL();
+    if (selectedStoryFromURL && get(this.stories, selectedStoryFromURL)) {
+      this.selectedStory = selectedStoryFromURL;
+    } else {
+      const firstParent = Object.keys(this.stories)[0];
+      this.selectedStory = `${firstParent}.${Object.keys(this.stories[firstParent])[0]}`;
+    }
   }
 
   @action

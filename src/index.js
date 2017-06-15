@@ -33,16 +33,7 @@ export function action(name: string) {
 
 export const start = mobxAction((opts: StartOptions = {}) => {
   devNovel.applyOpts(opts);
-
-  // select first story in the list
-  devNovel.selectedStory = (() => {
-    const firstParent = Object.keys(devNovel.stories)[0];
-    return `${firstParent}.${Object.keys(devNovel.stories[firstParent])[0]}`;
-  })();
-
-  // append UI to the page
+  devNovel.initSelectedStory();
   devNovel.injectUI();
-
-  // load selectedStory
   devNovel.loadSelectedStory();
 });
