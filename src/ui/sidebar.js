@@ -2,6 +2,7 @@
 
 import map from 'lodash/map';
 import reduce from 'lodash/reduce';
+import sortBy from 'lodash/sortBy';
 
 import React, { Component } from 'react';
 import styled from 'styled-components';
@@ -88,7 +89,7 @@ class Sidebar extends Component {
   @observable filterValue: string = '';
 
   @computed
-  get stories(): { [string]: { [string]: Function } } {
+  get stories(): { parentName: string, parentStories: { [string]: Function } }[] {
     const { devNovelInstance: { stories } } = this.props;
     const filterValue = this.filterValue.toLowerCase();
 
@@ -108,7 +109,14 @@ class Sidebar extends Component {
       );
     }
 
-    return stories;
+    return sortBy(
+      reduce(
+        stories,
+        (result, parentStories, parentName) => [...result, { parentName, parentStories }],
+        []
+      ),
+      'parentName'
+    );
   }
 
   renderFilter() {
@@ -127,7 +135,7 @@ class Sidebar extends Component {
   renderStories() {
     const { devNovelInstance } = this.props;
 
-    return map(this.stories, (parentStories, parentName) => {
+    return this.stories.map(({ parentStories, parentName }) => {
       const isSelected = devNovelInstance.selectedStory.split('.')[0] === parentName;
       return (
         <ParentContainer key={parentName}>
