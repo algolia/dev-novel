@@ -847,8 +847,8 @@ babel-types@^6.19.0, babel-types@^6.23.0, babel-types@^6.24.1, babel-types@^6.25
     to-fast-properties "^1.0.1"
 
 babylon@^6.17.0, babylon@^6.17.2:
-  version "6.17.3"
-  resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.17.3.tgz#1327d709950b558f204e5352587fd0290f8d8e48"
+  version "6.17.4"
+  resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.17.4.tgz#3e8b7402b88d22c3423e137a1577883b15ff869a"
 
 balanced-match@^1.0.0:
   version "1.0.0"
@@ -939,8 +939,8 @@ camelcase@^3.0.0:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-3.0.0.tgz#32fc4b9fcdaf845fcdf7e73bb97cac2261f0ab0a"
 
 caniuse-lite@^1.0.30000684:
-  version "1.0.30000686"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000686.tgz#d9d9ec6110e5533be544a689003f7596532c67d3"
+  version "1.0.30000692"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000692.tgz#34600fd7152352d85a47f4662a3b51b02d8b646f"
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -1190,12 +1190,12 @@ escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
 
 eslint-config-algolia@next:
-  version "11.0.1-beta"
-  resolved "https://registry.yarnpkg.com/eslint-config-algolia/-/eslint-config-algolia-11.0.1-beta.tgz#fe4dbf1ee383785f3a97c0992e162235af903423"
+  version "12.0.0-beta1"
+  resolved "https://registry.yarnpkg.com/eslint-config-algolia/-/eslint-config-algolia-12.0.0-beta1.tgz#35722f34ba32bd01e00186849252dbf23a6c0be9"
 
 eslint-config-prettier@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-2.1.1.tgz#ab3923fb704eebecab6960906b7d0d6e801cde58"
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-2.2.0.tgz#ca47663852789a75c10feba673e802cc1eff085f"
   dependencies:
     get-stdin "^5.0.1"
 
@@ -1721,7 +1721,7 @@ inflight@^1.0.4:
     once "^1.3.0"
     wrappy "1"
 
-inherits@2, inherits@^2.0.1, inherits@^2.0.3, inherits@~2.0.0, inherits@~2.0.1:
+inherits@2, inherits@^2.0.1, inherits@^2.0.3, inherits@~2.0.0, inherits@~2.0.1, inherits@~2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
 
@@ -1730,8 +1730,8 @@ ini@~1.3.0:
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.4.tgz#0537cb79daf59b59a1a517dff706c86ec039162e"
 
 inquirer@^3.0.6:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-3.1.0.tgz#e05400d48b94937c2d3caa7038663ba9189aab01"
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-3.1.1.tgz#87621c4fba4072f48a8dd71c9f9df6f100b2d534"
   dependencies:
     ansi-escapes "^2.0.0"
     chalk "^1.0.0"
@@ -2159,8 +2159,8 @@ mobx-react@^4.2.1:
     hoist-non-react-statics "^1.2.0"
 
 mobx@^3.1.15:
-  version "3.1.15"
-  resolved "https://registry.yarnpkg.com/mobx/-/mobx-3.1.15.tgz#b2c8831725de2f6f1b8d136e589b674b5b75c35d"
+  version "3.1.16"
+  resolved "https://registry.yarnpkg.com/mobx/-/mobx-3.1.16.tgz#7ef06b6de7cba31d2ca872484d47ee36265d7768"
 
 ms@0.7.1:
   version "0.7.1"
@@ -2431,8 +2431,8 @@ progress@^2.0.0:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.0.tgz#8a1be366bf8fc23db2bd23f10c6fe920b4389d1f"
 
 promise@^7.1.1:
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/promise/-/promise-7.2.0.tgz#67075a5fc537b39d66b87cdeb3732cf75867dbe2"
+  version "7.3.0"
+  resolved "https://registry.yarnpkg.com/promise/-/promise-7.3.0.tgz#e7feec5aa87a2cbb81acf47d9a3adbd9d4642d7b"
   dependencies:
     asap "~2.0.3"
 
@@ -2533,14 +2533,14 @@ read-pkg@^2.0.0:
     path-type "^2.0.0"
 
 readable-stream@^2.0.2, readable-stream@^2.0.6, readable-stream@^2.1.4, readable-stream@^2.2.2:
-  version "2.2.11"
-  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.2.11.tgz#0796b31f8d7688007ff0b93a8088d34aa17c0f72"
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.3.0.tgz#640f5dcda88c91a8dc60787145629170813a1ed2"
   dependencies:
     core-util-is "~1.0.0"
-    inherits "~2.0.1"
+    inherits "~2.0.3"
     isarray "~1.0.0"
     process-nextick-args "~1.0.6"
-    safe-buffer "~5.0.1"
+    safe-buffer "~5.1.0"
     string_decoder "~1.0.0"
     util-deprecate "~1.0.1"
 
@@ -2702,7 +2702,7 @@ rx-lite@*, rx-lite@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/rx-lite/-/rx-lite-4.0.8.tgz#0b1e11af8bc44836f04a6407e92da42467b79444"
 
-safe-buffer@^5.0.1:
+safe-buffer@^5.0.1, safe-buffer@~5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.0.tgz#fe4c8460397f9eaaaa58e73be46273408a45e223"
 
@@ -2860,8 +2860,8 @@ styled-normalize@^2.0.0:
   resolved "https://registry.yarnpkg.com/styled-normalize/-/styled-normalize-2.0.0.tgz#60db3dc11ba8481a7c5ef7af5072c9e224705ea3"
 
 stylis@^3.0.19:
-  version "3.1.7"
-  resolved "https://registry.yarnpkg.com/stylis/-/stylis-3.1.7.tgz#aba33dc3495784ecd768aed8b638a429a2ad2069"
+  version "3.1.8"
+  resolved "https://registry.yarnpkg.com/stylis/-/stylis-3.1.8.tgz#59e643861f7e67f0c9d157d7dfa8cf25a752e836"
 
 supports-color@^2.0.0:
   version "2.0.0"
@@ -3000,8 +3000,8 @@ util-deprecate@~1.0.1:
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
 
 uuid@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.0.1.tgz#6544bba2dfda8c1cf17e629a3a305e2bb1fee6c1"
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.1.0.tgz#3dd3d3e790abc24d7b0d3a034ffababe28ebbc04"
 
 v8flags@^2.0.10:
   version "2.1.1"
