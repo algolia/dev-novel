@@ -43,14 +43,14 @@ const StoryContainer = styled.div`
   background-color: #fff;
   border: solid 1px #E4E4E4;
   border-radius: 5px;
-  height: calc(65vh - 20px); /* -20px of inner padding */
+  height: calc(80vh - 20px); /* -20px of inner padding */
   width: 100%;
   overflow: scroll;
 `;
 
 const ActionLoggerContainer = StoryContainer.extend`
   margin-top: 10px;
-  height: calc(35vh - 10px); /* -10px of bottom padding */
+  height: calc(20vh - 10px); /* -10px of bottom padding */
   overflow: hidden;
   width: 100%;
 `;
