@@ -2,7 +2,7 @@
 
 import map from 'lodash/map';
 import reduce from 'lodash/reduce';
-import sortBy from 'lodash/sortBy';
+import sortBy from 'lodash/fp/sortBy';
 
 import React, { Component } from 'react';
 import styled from 'styled-components';
@@ -71,6 +71,8 @@ const StoryContainer = SelectParent.extend`
   }
 `;
 
+const sortStories = sortBy('parentName');
+
 @observer
 class Sidebar extends Component {
   props: {
@@ -93,29 +95,31 @@ class Sidebar extends Component {
     const { devNovelInstance: { stories } } = this.props;
     const filterValue = this.filterValue.toLowerCase();
 
-    if (filterValue && filterValue.trim() && filterValue.trim().length >= 3) {
-      return reduce(
-        stories,
-        (result, parentStories, parentName) => {
-          const isParentNameMatch = parentName.toLowerCase().includes(filterValue);
-          const isChildrenStoryMatch = Object.keys(parentStories).some(storyName =>
-            storyName.toLowerCase().includes(filterValue)
-          );
-          return isParentNameMatch || isChildrenStoryMatch
-            ? { ...result, [parentName]: parentStories }
-            : result;
-        },
-        {}
+    if (filterValue && filterValue.trim()) {
+      return sortStories(
+        reduce(
+          stories,
+          (result, parentStories, parentName) => {
+            const isParentNameMatch = parentName.toLowerCase().includes(filterValue);
+            const isChildrenStoryMatch = Object.keys(parentStories).some(storyName =>
+              storyName.toLowerCase().includes(filterValue)
+            );
+
+            return isParentNameMatch || isChildrenStoryMatch
+              ? [...result, { parentName, parentStories }]
+              : result;
+          },
+          []
+        )
       );
     }
 
-    return sortBy(
+    return sortStories(
       reduce(
         stories,
         (result, parentStories, parentName) => [...result, { parentName, parentStories }],
         []
-      ),
-      'parentName'
+      )
     );
   }
 
