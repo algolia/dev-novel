@@ -11,11 +11,9 @@ import { observable, computed } from 'mobx';
 import { observer } from 'mobx-react';
 
 const SidebarContainer = styled.div`
-  flex: 0 0 auto;
   padding: 10px;
   overflow: scroll;
   height: 100%;
-  width: 250px;
 `;
 
 const ProjectName = styled.a`

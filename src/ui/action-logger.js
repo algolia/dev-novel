@@ -6,6 +6,15 @@ import { Inspector } from 'react-inspector';
 import { toJS } from 'mobx';
 import { observer } from 'mobx-react';
 
+const Container = styled.div`
+  background-color: #fff;
+  border: solid 1px #E4E4E4;
+  border-radius: 5px;
+  height: calc(100% - 10px);
+  margin: 0 10px 10px 0;
+  overflow: hidden;
+`;
+
 const Title = styled.div`
   border-bottom: 1px solid rgb(234, 234, 234);
   display: flex;
@@ -27,7 +36,7 @@ const Log = styled.div`
 `;
 
 const ActionLogger = ({ devNovelInstance }: { devNovelInstance: Object }) =>
-  <div>
+  <Container>
     <Title>Action logger</Title>
     <LogsContainer>
       {devNovelInstance.actionLogs.peek().reverse().map(({ name, data }, idx) =>
@@ -36,6 +45,6 @@ const ActionLogger = ({ devNovelInstance }: { devNovelInstance: Object }) =>
         </Log>
       )}
     </LogsContainer>
-  </div>;
+  </Container>;
 
 export default observer(ActionLogger);
