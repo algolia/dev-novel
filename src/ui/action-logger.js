@@ -10,9 +10,9 @@ const Container = styled.div`
   background-color: #fff;
   border: solid 1px #E4E4E4;
   border-radius: 5px;
-  height: calc(100% - 10px);
   margin: 0 10px 10px 0;
   overflow: hidden;
+  width: 100%;
 `;
 
 const Title = styled.div`
