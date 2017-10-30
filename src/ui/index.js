@@ -80,15 +80,19 @@ const StoryContainer = styled.div`
   border: solid 1px #E4E4E4;
   border-radius: 5px;
   margin: 10px 10px 0 0;
-  width: 100%;
+  height: calc(100% - 10px);
   overflow: scroll;
 `;
+
+const paneStyle = {
+  overflow: 'scroll',
+};
 
 const DevNovelUI = ({ devNovelInstance }: { devNovelInstance: Object }) =>
   <UIWrapper>
     <SplitPane split="vertical" minSize={250}>
       <Sidebar devNovelInstance={devNovelInstance} />
-      <SplitPane split="horizontal" minSize={750}>
+      <SplitPane split="horizontal" defaultSize={200} primary="second" paneStyle={paneStyle}>
         <StoryContainer id="story-container" />
         <ActionLogger devNovelInstance={devNovelInstance} />
       </SplitPane>
